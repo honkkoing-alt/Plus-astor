@@ -1,0 +1,221 @@
+:root {
+    --primary-color: #ff0000; /* أحمر */
+    --secondary-color: #0000ff; /* أزرق */
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f9;
+    color: #333;
+    text-align: right; /* دعم اللغة العربية */
+}
+
+/* تصميم قائمة التطبيقات وتقسيم الشاشة - تم تثبيت التقسيم لصفين (عمودين) دائماً */
+.app-list-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* تصميم بطاقة التطبيق */
+.app-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+}
+
+.app-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.app-card img {
+    width: 100%;
+    height: 150px; /* يمكنك تعديل ارتفاع الصورة */
+    object-fit: cover;
+    display: block;
+}
+
+/* مربع اسم التطبيق النابض والمتدرج */
+.app-name-box {
+    padding: 15px 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1em;
+    /* التدرج اللوني */
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    background-size: 200% 200%;
+    
+    /* تحريك النبض والتدرج للتطبيق */
+    animation: gradient-pulse 4s ease infinite;
+}
+
+/* تعريف تحريك التدرج والنبض للتطبيق */
+@keyframes gradient-pulse {
+    0% { background-position: 0% 50%; box-shadow: 0 0 5px rgba(255, 0, 0, 0.7); }
+    50% { background-position: 100% 50%; box-shadow: 0 0 20px rgba(0, 0, 255, 0.9); }
+    100% { background-position: 0% 50%; box-shadow: 0 0 5px rgba(255, 0, 0, 0.7); }
+}
+
+/* ------------------ تصميم نافذة الشراء (Modal) ------------------ */
+
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); 
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 25px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: right;
+}
+
+.close-button {
+    color: #aaa;
+    float: left;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.app-details-form label {
+    display: block;
+    margin-bottom: 5px;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.app-details-form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.price-display {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #4CAF50; /* لون أخضر للسعر */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* تنسيق زر الشراء النابض والمتدرج */
+#buyButton {
+    /* تدرج لوني من الأحمر إلى الأزرق */
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); 
+    background-size: 200% 200%;
+    animation: button-pulse 4s ease infinite; /* تطبيق النبض */
+
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.1em;
+    transition: background-color 0.3s;
+    font-weight: bold; 
+}
+
+/* تحريك زر الشراء */
+@keyframes button-pulse {
+    0% { background-position: 0% 50%; box-shadow: 0 0 10px rgba(255, 0, 0, 0.7); }
+    50% { background-position: 100% 50%; box-shadow: 0 0 20px rgba(0, 0, 255, 0.9); }
+    100% { background-position: 0% 50%; box-shadow: 0 0 10px rgba(255, 0, 0, 0.7); }
+}
+
+.auto-note {
+    text-align: center;
+    color: #555;
+    font-size: 0.9em;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.app-image-modal {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 10px auto 20px;
+}
+
+/* ------------------ تصميم نافذة الإشعارات المخصصة (Custom Alert) ------------------ */
+
+.custom-alert-modal {
+    display: none; 
+    position: fixed;
+    z-index: 20; /* أعلى من المودال الأساسي */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); 
+    padding-top: 15%;
+}
+
+.custom-alert-content {
+    background-color: #fff;
+    margin: auto;
+    padding: 30px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 350px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    border: 3px solid #ff0000; /* إطار أحمر تحذيري */
+}
+
+#customAlertMessage {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #ff0000; /* لون أحمر للرسالة */
+    margin-bottom: 20px;
+}
+
+#customAlertCloseButton {
+    background-color: #ff0000; /* أحمر */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+#customAlertCloseButton:hover {
+    background-color: #cc0000;
+}

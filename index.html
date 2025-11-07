@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قائمة تطبيقات الشحن</title>
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+
+    <header>
+        <h1>🛒 قائمة تطبيقات شحن الرصيد</h1>
+    </header>
+
+    <div class="app-list-container">
+        </div>
+
+    <div id="purchaseModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2 id="modalAppName"></h2>
+            <div class="app-details-form">
+                <img id="modalAppImage" src="" alt="صورة التطبيق" class="app-image-modal">
+                <label for="userId">مربع (إيدي المستخدم):</label>
+                <input type="text" id="userId" placeholder="أدخل ايدي المستخدم هنا" required>
+                
+                <label for="quantity">مربع (الكمية):</label>
+                <input type="text" id="quantity" placeholder="أدخل الكمية المطلوبة هنا" required>
+
+                <p class="price-display">السعر: <span id="currentPrice">0</span> $</p>
+                
+                <button id="buyButton" onclick="completePurchase()">شراء / إتمام الطلب</button>
+                <p class="auto-note">هذا المنتج يعمل بشكل آلي على مدار 24 ساعة 🥰</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+    <div id="customAlert" class="custom-alert-modal">
+        <div class="custom-alert-content">
+            <p id="customAlertMessage"></p>
+            <button id="customAlertCloseButton">حسناً</button>
+        </div>
+    </div>
+</body>
+</html>
